@@ -1,0 +1,22 @@
+{
+  "name": "internviewer",
+  "version": "1.0.0",
+  "description": "interview platform",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix Backend && npm install --prefix Frontend/interviewer && npm run build --prefix Frontend/interviewer",
+    "start": "npm run start --prefix Backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max12699/Interviewer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/max12699/Interviewer/issues"
+  },
+  "homepage": "https://github.com/max12699/Interviewer#readme"
+}
