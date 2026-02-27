@@ -1,5 +1,4 @@
 import {streamChat} from "stream-chat"
-import {streamClient} from "@stream-io/node-sdk"
 
 import {ENV} from "./env"
 
