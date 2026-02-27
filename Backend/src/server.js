@@ -13,7 +13,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// CORS
+// 
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }))
 
 // Inngest Route
@@ -25,6 +25,7 @@ const __dirname = path.dirname(__filename)
 
 console.log("PORT:", ENV.PORT)
 console.log("DB_URL:", ENV.DB_URL)
+console.log("Loaded functions:", functions);
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "API is up and running" })
