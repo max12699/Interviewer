@@ -1,6 +1,7 @@
 import { Inngest } from "inngest";
 import { connectDB } from "./db.js";
-import User from "../../src/models/User.js"; // ✅ Correct path
+import User from "../../src/models/User.js"; 
+import { deleteStreamUser, upsertStreamUser } from "./stream.js";
 
 export const inngest = new Inngest({
   id: "interviewer",
@@ -30,6 +31,14 @@ const syncUser = inngest.createFunction(
         { upsert: true, new: true }
       );
 
+      await User.create(newUser)
+
+      await upsertStreamUser({
+        id: newUser.clerkId.toString(),
+        name: newUser.name,
+        image: newUser.profileImage,
+      })
+
       console.log("✅ User synced successfully:", id);
     } catch (error) {
       console.error("❌ Error syncing user:", error.message);
@@ -47,6 +56,8 @@ const deleteUserFromDB = inngest.createFunction(
 
       const { id } = event.data;
       await User.deleteOne({ clerkId: id });
+
+      await deleteStreamUser(id.toString())
 
       console.log("🗑️ User deleted successfully:", id);
     } catch (error) {
