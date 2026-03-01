@@ -10,6 +10,11 @@ import {
 } from "lucide-react";
 import { SignInButton } from "@clerk/clerk-react";
 
+/**
+ * Render the application's landing page containing the navigation bar, hero section, and feature grid.
+ *
+ * @returns {JSX.Element} The homepage JSX element composed of the navbar, hero content (CTAs, stats, image), and features section.
+ */
 function HomePage() {
   return (
     <div className="bg-gradient-to-br from-base-100 via-base-200 to-base-300">
