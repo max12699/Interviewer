@@ -8,6 +8,17 @@ import ProblemPage from "./pages/ProblemPage";
 import ProblemsPage from "./pages/ProblemsPage";
 import SessionPage from "./pages/SessionPage";
 
+/**
+ * Application root component that renders route-based pages and a global toaster.
+ *
+ * Waits for authentication state to load to avoid visual flicker. When loaded,
+ * it directs unauthenticated users to the home page and authenticated users
+ * to the dashboard; protected routes (/dashboard, /problems, /problem/:id,
+ * /session/:id) render their pages only for signed-in users and redirect
+ * unauthenticated requests to "/".
+ *
+ * @returns {JSX.Element | null} The app's element tree, or `null` while authentication state is loading.
+ */
 function App() {
   const { isSignedIn, isLoaded } = useUser();
 
