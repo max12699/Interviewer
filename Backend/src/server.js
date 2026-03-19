@@ -20,11 +20,13 @@ app.use(express.json());
 // credentials:true meaning?? => server allows a browser to include cookies on request
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ENV.NODE_ENV === "production"
+      ? process.env.FRONTEND_URL  // Render env mein add karo
+      : "http://localhost:5173",
     credentials: true,
-  })
-);
-
+  }
+  )
+)
 //app.options("*", cors());
 app.use(clerkMiddleware()); // this adds auth field to request object: req.auth()
 
